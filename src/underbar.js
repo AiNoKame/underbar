@@ -133,7 +133,7 @@ var _ = { };
     // TIP: map is really handy when you want to transform an array of
     // values into a new array of values. _.pluck() is solved for you
     // as an example of this.
-    return _.map(array, function(value){
+    return _.map(array, function(value) {
       return value[propertyName];
     });
   };
@@ -141,6 +141,13 @@ var _ = { };
   // Calls the method named by methodName on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
+  	if (typeof(functionOrKey) === 'function') {
+  	  return _.map(collection, function(item) {
+        return functionOrKey.apply(item, args);
+  	  });
+  	} else {
+      return functionOrKey.apply();
+  	}
   };
 
   // Reduces an array or object to a single value by repetitively calling
