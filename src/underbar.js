@@ -32,6 +32,7 @@ var _ = { };
   	if (n > array.length) {
   		n = array.length;
   	}
+
   	return n === undefined ? array[array.length - 1] : array.slice(array.length - n, array.length);
   };
 
@@ -71,6 +72,15 @@ var _ = { };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, test) {
+  	var passed = [];
+
+  	_.each(collection, function(item) {
+  		if (test(item)) {
+  			passed.push(item);
+  		}
+  	});
+
+  	return passed;
   };
 
   // Return all elements of an array that don't pass a truth test.
