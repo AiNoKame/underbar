@@ -342,12 +342,7 @@ var _ = { };
   		var randomValue = remainingValues[randomIndex];
 
   		shuffled.push(randomValue);
-
-  		while (remainingValues[0] !== randomValue) {
-        remainingValues.push(remainingValues.shift());
-  		}
-
-  		remainingValues.shift();
+  		remainingValues.splice(randomIndex, 1);
   	}
 
   	return shuffled;
